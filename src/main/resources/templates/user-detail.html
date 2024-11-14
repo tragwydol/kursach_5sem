@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>User Detail</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<h1>User Details</h1>
+<div th:if="${error}">
+  <p th:text="${error}" class="error"></p>
+</div>
+<div th:unless="${error}">
+  <p><strong>ID:</strong> <span th:text="${user.id}"></span></p>
+  <p><strong>Username:</strong> <span th:text="${user.username}"></span></p>
+  <p><strong>Email:</strong> <span th:text="${user.email}"></span></p>
+  <p><strong>Role:</strong> <span th:text="${user.role}"></span></p>
+</div>
+<a th:href="@{/users/{id}/edit(id=${user.id})}">Edit User</a>
+<a href="/users">Back to User List</a>
+</body>
+</html>

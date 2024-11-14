@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Список сертификатов</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<h1>Список сертификатов</h1>
+<table>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Пользователь ID</th>
+    <th>Курс ID</th>
+    <th>Дата выдачи</th>
+    <th>Действия</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="certificate : ${certificates}">
+    <td th:text="${certificate.id}"></td>
+    <td th:text="${certificate.userId}"></td>
+    <td th:text="${certificate.courseId}"></td>
+    <td th:text="${certificate.issueDate}"></td>
+    <td>
+      <a th:href="@{/certificates/{id}(id=${certificate.id})}">Просмотр</a>
+      <form th:action="@{/certificates/{id}/delete(id=${certificate.id})}" method="post" style="display:inline;">
+        <button type="submit">Удалить</button>
+      </form>
+    </td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>

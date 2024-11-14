@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Детали курса</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<h1>Детали курса</h1>
+<p><strong>ID:</strong> <span th:text="${course.id}"></span></p>
+<p><strong>Название:</strong> <span th:text="${course.title}"></span></p>
+<p><strong>Описание:</strong> <span th:text="${course.description}"></span></p>
+<p><strong>Теоретический контент:</strong> <span th:text="${course.theoreticalContent}"></span></p>
+<p><strong>Проходной балл:</strong> <span th:text="${course.passingScore}"></span></p>
+<a href="/courses">Назад к списку</a>
+<a th:href="@{/courses/{id}/edit(id=${course.id})}">Редактировать</a>
+<form th:action="@{/courses/{id}/delete(id=${course.id})}" method="post" style="display:inline;">
+  <button type="submit">Удалить</button>
+</form>
+</body>
+</html>

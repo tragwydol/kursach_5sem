@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Создать/Редактировать курс</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<h1 th:text="${course.id == null ? 'Создать новый курс' : 'Редактировать курс'}"></h1>
+<form th:action="${course.id == null ? '/courses' : '/courses/' + course.id}" method="post">
+    <div>
+        <label for="title">Название:</label>
+        <input type="text" id="title" name="title" th:value="${course.title}" required>
+    </div>
+    <div>
+        <label for="description">Описание:</label>
+        <textarea id="description" name="description" required th:text="${course.description}"></textarea>
+    </div>
+    <div>
+        <label for="theoretical_content">Теоретический контент:</label>
+        <textarea id="theoretical_content" name="theoretical_content" required th:text="${course.theoreticalContent}"></textarea>
+    </div>
+    <div>
+        <label for="passing_score">Проходной балл:</label>
+        <input type="number" id="passing_score" name="passing_score" th:value="${course.passingScore}" required>
+    </div>
+    <button type="submit">Сохранить</button>
+    <a href="/courses">Отмена</a>
+</form>
+</body>
+</html>

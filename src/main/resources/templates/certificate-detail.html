@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Детали сертификата</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<h1>Детали сертификата</h1>
+<p><strong>ID:</strong> <span th:text="${certificate.id}"></span></p>
+<p><strong>Пользователь ID:</strong> <span th:text="${certificate.userId}"></span></p>
+<p><strong>Курс ID:</strong> <span th:text="${certificate.courseId}"></span></p>
+<p><strong>Дата выдачи:</strong> <span th:text="${certificate.issueDate}"></span></p>
+<a href="/certificates">Назад к списку</a>
+<form th:action="@{/certificates/{id}/delete(id=${certificate.id})}" method="post" style="display:inline;">
+  <button type="submit">Удалить</button>
+</form>
+</body>
+</html>

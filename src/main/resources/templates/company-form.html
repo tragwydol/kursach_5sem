@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Создать/Редактировать компанию</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<h1 th:text="${company.id == null ? 'Создать новую компанию' : 'Редактировать компанию'}"></h1>
+<form th:action="${company.id == null ? '/companies' : '/companies/' + company.id}" method="post">
+  <div>
+    <label for="name">Название:</label>
+    <input type="text" id="name" name="name" th:value="${company.name}" required>
+  </div>
+  <div>
+    <label for="specification">Спецификация:</label>
+    <input type="text" id="specification" name="specification" th:value="${company.specification}" required>
+  </div>
+  <button type="submit">Сохранить</button>
+  <a href="/companies">Отмена</a>
+</form>
+</body>
+</html>

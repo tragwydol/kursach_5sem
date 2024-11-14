@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Редактировать вопрос</title>
+</head>
+<body>
+<h1>Редактировать вопрос</h1>
+<form th:action="@{/questions/{id}(id=${question.id})}" th:object="${question}" method="post">
+  <label for="questionText">Текст вопроса:</label>
+  <input type="text" id="questionText" th:field="*{questionText}" required/>
+
+  <label for="course">Курс:</label>
+  <select id="course" th:field="*{course.id}">
+    <option th:each="course : ${courses}" th:value="${course.id}"
+            th:text="${course.title}" th:selected="${course.id == question.course?.id}">
+    </option>
+  </select>
+
+  <button type="submit">Сохранить</button>
+</form>
+</body>
+</html>

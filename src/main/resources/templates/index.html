@@ -1,0 +1,46 @@
+<!-- Файл: src/main/resources/templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Главная страница</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<header>
+  <h1>Добро пожаловать</h1>
+  <nav>
+    <ul>
+      <li><a href="/users">Пользователи</a></li>
+      <li><a href="/courses">Курсы</a></li>
+      <li><a href="/certificates">Сертификаты</a></li>
+      <li><a href="/companies">Компании</a></li>
+      <li><a href="/questions">Вопросы</a></li>
+      <li><a href="/answers">Ответы</a></li>
+      <li><a href="/enrollments">Записи</a></li>
+    </ul>
+  </nav>
+</header>
+<main>
+  <h2>Наши курсы</h2>
+  <p>Изучите наши курсы по промышленной безопасности и получите сертификаты.</p>
+
+  <!-- Информация о пользователе -->
+  <div class="user-info">
+    <h3>Информация о пользователе</h3>
+    <div th:if="${user != null}">
+      <p><strong>Имя пользователя:</strong> <span th:text="${user.username}"></span></p>
+      <p><strong>Email:</strong> <span th:text="${user.email}"></span></p>
+      <p><strong>Роль:</strong> <span th:text="${user.role}"></span></p>
+    </div>
+    <div th:if="${user == null}">
+      <p>Вы не зарегистрированы.</p>
+    </div>
+  </div>
+</main>
+<footer>
+  <p>&copy; 2024 Система обучения. Все права защищены.</p>
+</footer>
+</body>
+</html>

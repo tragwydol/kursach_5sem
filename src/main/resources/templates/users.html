@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>User List</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<h1>Users</h1>
+<div th:if="${error}">
+  <p th:text="${error}" class="error"></p>
+</div>
+<table>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Username</th>
+    <th>Email</th>
+    <th>Role</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="user : ${users}">
+    <td th:text="${user.id != null ? user.id : 'N/A'}"></td>
+    <td th:text="${user.username != null ? user.username : 'N/A'}"></td>
+    <td th:text="${user.email != null ? user.email : 'N/A'}"></td>
+    <td th:text="${user.role != null ? user.role : 'N/A'}"></td>
+    <td>
+      <a th:href="@{/users/{id}(id=${user.id})}">View</a> |
+      <a th:href="@{/users/{id}/edit(id=${user.id})}">Edit</a> |
+      <form th:action="@{/users/{id}/delete(id=${user.id})}" method="post" style="display:inline;">
+        <button type="submit">Delete</button>
+      </form>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<a href="/users/new">Create New User</a>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Детали ответа</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<h1>Детали ответа</h1>
+<p><strong>ID:</strong> <span th:text="${answer.id}"></span></p>
+<p><strong>Текст ответа:</strong> <span th:text="${answer.answerText}"></span></p>
+<p><strong>ID вопроса:</strong> <span th:text="${answer.question.id}"></span></p>
+<p><strong>Правильный ответ:</strong> <span th:text="${answer.isCorrect ? 'Да' : 'Нет'}"></span></p>
+<a href="/answers">Назад к списку</a>
+<a th:href="@{/answers/{id}/edit(id=${answer.id})}">Редактировать</a>
+<form th:action="@{/answers/{id}/delete(id=${answer.id})}" method="post" style="display:inline;">
+  <button type="submit">Удалить</button>
+</form>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Список записей ответов пользователей</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<h1>Список записей ответов пользователей</h1>
+<table>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>ID записи</th>
+    <th>ID вопроса</th>
+    <th>ID ответа</th>
+    <th>Выбранный ответ</th>
+    <th>Действия</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="userAnswer : ${userAnswers}">
+    <td th:text="${userAnswer.id}"></td>
+    <td th:text="${userAnswer.enrollmentId}"></td>
+    <td th:text="${userAnswer.questionId}"></td>
+    <td th:text="${userAnswer.answerId}"></td>
+    <td th:text="${userAnswer.selectedAnswer ? 'Да' : 'Нет'}"></td>
+    <td>
+      <a th:href="@{/user-answers/{id}(id=${userAnswer.id})}">Просмотр</a>
+      <form th:action="@{/user-answers/{id}/delete(id=${userAnswer.id})}" method="post" style="display:inline;">
+        <button type="submit">Удалить</button>
+      </form>
+    </td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Создать/Редактировать ответ</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<h1 th:text="${answer.id == null ? 'Создать новый ответ' : 'Редактировать ответ'}"></h1>
+<form th:action="${answer.id == null ? '/answers' : '/answers/' + answer.id}" method="post">
+  <div>
+    <label for="answerText">Текст ответа:</label>
+    <textarea id="answerText" name="answerText" required th:text="${answer.answerText}"></textarea>
+  </div>
+  <div>
+    <label for="questionId">Выберите вопрос:</label>
+    <select id="questionId" name="question.id" required>
+      <option th:each="question : ${questions}"
+              th:value="${question.id}"
+              th:text="${question.id} + ' - ' + ${question.questionText}"
+              th:selected="${question.id == answer.question.id}"></option>
+    </select>
+  </div>
+  <div>
+    <label for="isCorrect">Правильный ответ:</label>
+    <input type="checkbox" id="isCorrect" name="isCorrect" th:checked="${answer.isCorrect}">
+  </div>
+  <button type="submit">Сохранить</button>
+  <a href="/answers">Отмена</a>
+</form>
+</body>
+</html>
